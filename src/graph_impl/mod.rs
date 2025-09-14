@@ -537,7 +537,7 @@ where
     /// Write Graph to file in dot format.
     pub fn write_to_file<S: Into<PathBuf>>(&self, path: S) -> std::io::Result<()> {
         let path: PathBuf = path.into();
-        path.parent().map(|p| std::fs::create_dir_all(p.clone()));
+        path.parent().map(|p| std::fs::create_dir_all(p));
         std::fs::write(path, format!("{:?}", Dot::new(self)))
     }
 }
